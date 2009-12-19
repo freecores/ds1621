@@ -1,5 +1,5 @@
-// LXX-XXXXXXXE
-// Project:   AXX-X
+// LTX-CREDENCE
+// Project:   XXX-X
 //
 // Module:    DS1621_b
 // Revision:  01
@@ -13,11 +13,11 @@
 //                          DS1621_CNT (8'hA8) & DS1621_SLP (8'hA9) registers are not supported by this model.
 //
 //            real board_temp; is defined in the package file for hierarchy independence.
-//            I t can be declared in this module also but in that case the hierarchy reference to this variable in the test is necessary.
+//            It can be declared in this module also but in that case the hierarchy reference to this variable in the test is necessary.
 //            
 //            The sim environment fragments are present in the accompanying files.
 //            
-//            I couldn't find the model in the Internet. So, feel free to use it anywhere. This is a gift to everybody.
+//            I couldn't find the model in the Internet. So, feel free to use it anywhere. This is a gift to everybody, if appropriate...
 //
 
 `timescale 1ns/10ps
