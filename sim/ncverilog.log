@@ -1,0 +1,144 @@
+ncverilog(64): 08.20-s010: (c) Copyright 1995-2009 Cadence Design Systems, Inc.
+TOOL:	ncverilog	08.20-s010: Started on Apr 02, 2010 at 14:33:38 AMST
+/et/hw/vendor/cadence/ius/v8.2USR10/tools/bin/64bit/ncverilog
+	+sv
+	-f sim_args.v
+		+libext+.v+.vp
+		+access+rwc
+		+incdir+ds1621/files+
+	-f sim.files
+		ds1621/files/tb_top.sv
+		ds1621/files/DS1621_b.sv
+		ds1621/files/24LC16B.v
+	+notimingchecks
+	+nowarn+LIBNOU
+	+define+NOCHECKS
+	+define+verbose_0
+	+define+nobanner
+	+nclibdirname+.INCA_libs
+file: ds1621/files/tb_top.sv
+    default input #1step output #1step;
+                       |
+ncvlog: *W,SAWSTP (ds1621/files/tb_top.sv,96|23): Time unit "step" seen in literal - using local precision.
+    default input #1step output #1step;
+                                     |
+ncvlog: *W,SAWSTP (ds1621/files/tb_top.sv,96|37): Time unit "step" seen in literal - using local precision.
+	module worklib.top:sv
+		errors: 0, warnings: 2
+file: ds1621/files/DS1621_b.sv
+tri1        SDA;
+              |
+ncvlog: *W,ILLPDX (ds1621/files/DS1621_b.sv,76|14): Multiple declarations for a port not allowed in module with ANSI list of port declarations (port 'SDA') [12.3.4(IEEE-2001)].
+	module worklib.DS1621_b:sv
+		errors: 0, warnings: 1
+file: ds1621/files/24LC16B.v
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+M24LC16B  u_24LC16B(
+                  |
+ncelab: *W,CUVWSI (../files/tb_top.sv,65|18): 3 input ports were not connected:
+ncelab: (../files/24LC16B.v,81): A0
+ncelab: (../files/24LC16B.v,81): A1
+ncelab: (../files/24LC16B.v,81): A2
+
+	Building instance overlay tables: ...............
+        $readmemh( "DS1621_b_nvm.sv", nv_RAM );
+                                           |
+ncelab: *W,MEMODR (../files/DS1621_b.sv,368|43): $readmem default memory order incompatible with IEEE1364.
+.....
+        $readmemh( "DS1621_b_nvm.sv", nv_RAM );
+                                           |
+ncelab: *W,MEMODR (../files/DS1621_b.sv,368|43): $readmem default memory order incompatible with IEEE1364.
+ Done
+	Generating native compiled code:
+		worklib.DS1621_b:sv <0x0a2e8c6e>
+			streams: 103, words: 33942
+		worklib.DS1621_b:sv <0x2dea07dd>
+			streams: 103, words: 33942
+		worklib.top:sv <0x5508e5e8>
+			streams:  18, words: 69160
+	Loading native compiled code:     .................... Done
+	Building instance specific data structures.
+	Design hierarchy summary:
+		                 Instances  Unique
+		Modules:                 4       3
+		Primitives:              1       1
+		Registers:             165     109
+		Scalar wires:          111       -
+		Vectored wires:        152       -
+		Always blocks:          87      52
+		Initial blocks:         15      12
+		Clocking blocks:         1       1
+		Cont. assignments:     217     202
+		Pseudo assignments:      4       4
+		Timing checks:          21       -
+		Simulation timescale:  1ps
+	Writing initial simulation snapshot: worklib.top:sv
+Loading snapshot worklib.top:sv .................... Done
+ncsim> source /et/hw/vendor/cadence/ius/v8.2USR10/tools/inca/files/ncsimrc
+ncsim> run
+*****************************
+*                           *
+*    DS1621 simulation      *
+*                           *
+*****************************
+--DS1621 test 01 begin-->
+----DS1621 sending CFG=03, TH=16'h2800, TL=16'h0A00
+----DS1621 sending done
+----DS1621 reading TH
+----DS1621 TH = 2800
+----DS1621 start TMP conversion
+passing 1000 us
+passing 2000 us
+----DS1621 T=25.5*C, expecting 1980, TMP = 1980
+----DS1621 start TMP conversion
+passing 3000 us
+passing 4000 us
+----DS1621 T=-13.0*C, expecting F300, TMP = f300
+----DS1621 start TMP conversion
+passing 5000 us
+passing 6000 us
+----DS1621 T=-13.5*C, expecting F380, TMP = f380
+----DS1621 start TMP conversion
+passing 7000 us
+passing 8000 us
+----DS1621 T=130.0*C, expecting 7D00, TMP = 7d00
+----DS1621 start TMP conversion
+passing 9000 us
+passing 10000 us
+passing 11000 us
+----DS1621 T=-60.0*C, expecting C900, TMP = c900
+--DS1621 test 01 end--<
+
+--------------------------------------------------------------------------------
+--DS1621 test 06 begin-->
+----DS1621 sending CFG=03, TH=16'h2800, TL=16'h0A00
+----DS1621 sending done
+----DS1621 start TMP conversion
+passing 12000 us
+passing 13000 us
+----DS1621 T=25.5*C, expecting 1980, TMP = 1980
+----DS1621 start TMP conversion
+passing 14000 us
+passing 15000 us
+----DS1621 T=-13.0*C, expecting F300, TMP = f300
+--DS1621 test 06 end--<
+
+--------------------------------------------------------------------------------
+--EEPROM test begin-->
+---- writing      A=12'h001, D=8'h5A
+passing 16000 us
+passing 17000 us
+passing 18000 us
+passing 19000 us
+passing 20000 us
+---- writing done A=12'h001, D=8'h5A
+
+---- reading      A=12'h001
+---- reading done A=12'h001 contains 5a
+--EEPROM test end--<
+
+Simulation complete via $finish(1) at time 20899601 NS + 0
+../files/tb_top.sv:61     $finish;
+ncsim> exit
+TOOL:	ncverilog	08.20-s010: Exiting on Apr 02, 2010 at 14:33:41 AMST  (total: 00:00:03)
